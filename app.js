@@ -15,8 +15,10 @@ window.onload = () => {
 	}
 	document.querySelectorAll(".sample").forEach(img => img.onclick = () => {
 		var input = document.getElementById("image_uploads");
+		input.addEventListener("change", () => {
+			if (input.files.length === 1)
+				img.setAttribute("src", window.URL.createObjectURL(input.files[0]));
+		})
 		input.click();
-		if (input.files.length === 1)
-			img.setAttribute("src", window.URL.createObjectURL(input.files[0]));
 	})
 };
